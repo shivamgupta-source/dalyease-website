@@ -3,71 +3,216 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dalyease – Electric three-wheeler mobility in Kolkata</title>
-<meta name="description" content="Dalyease provides electric three-wheeler vehicles for goods transport and passenger rides in Kolkata, with instant quotes and bookings on WhatsApp.">
+<title>Dalyease – Corporate cab and electric logistics booking in Kolkata</title>
+<meta name="description" content="Dalyease: corporate four-wheeler cab booking and electric three-wheeler logistics in Kolkata. Request a quote online and confirm on WhatsApp.">
 <style>
-  :root{--green:#0f7a4d;--dark:#12281f;--light:#f3f8f5;--ink:#1d2b25;--mute:#5b6b63}
+  :root{--green:#0f7a4d;--green-d:#0b5c3a;--dark:#12281f;--light:#f3f8f5;--ink:#1d2b25;--mute:#5b6b63;--line:#d5e3db;--err:#b3261e}
   *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
   body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);line-height:1.6;background:#fff}
   a{color:var(--green)}
-  header{background:var(--dark);color:#fff}
-  .wrap{max-width:980px;margin:0 auto;padding:0 20px}
-  nav{display:flex;justify-content:space-between;align-items:center;padding:16px 0;flex-wrap:wrap;gap:8px}
-  nav .brand{font-weight:800;font-size:22px;letter-spacing:.5px}
-  nav a{color:#cfe8dc;text-decoration:none;margin-left:18px;font-size:15px}
-  .hero{padding:56px 0 64px}
-  .hero h1{font-size:clamp(30px,5vw,46px);line-height:1.15;margin:0 0 14px}
-  .hero p{font-size:18px;color:#cfe8dc;max-width:620px;margin:0 0 26px}
-  .btn{display:inline-block;background:var(--green);color:#fff;text-decoration:none;padding:13px 22px;border-radius:8px;font-weight:600}
-  section{padding:48px 0}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+  header.top{background:var(--dark);position:sticky;top:0;z-index:20}
+  nav{display:flex;justify-content:space-between;align-items:center;padding:12px 0;flex-wrap:wrap;gap:8px}
+  .brand{font-weight:800;font-size:22px;letter-spacing:1px;color:#fff;text-decoration:none}
+  nav .links a{color:#cfe8dc;text-decoration:none;margin-left:18px;font-size:15px}
+  nav .links a.cta{background:var(--green);color:#fff;padding:8px 14px;border-radius:8px;font-weight:600}
+  .hero{background:linear-gradient(160deg,#12281f 0%,#0f4a33 100%);color:#fff;padding:56px 0 64px}
+  .hero h1{font-size:clamp(28px,5vw,44px);line-height:1.15;margin:0 0 14px;max-width:700px}
+  .hero p{font-size:18px;color:#cfe8dc;max-width:620px;margin:0 0 28px}
+  .choices{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+  .choice{display:block;background:#fff;color:var(--ink);border-radius:14px;padding:22px;text-decoration:none;border:2px solid transparent;transition:.15s}
+  .choice:hover{border-color:var(--green);transform:translateY(-2px)}
+  .choice .tag{font-size:12px;font-weight:700;letter-spacing:.8px;color:var(--green);text-transform:uppercase}
+  .choice h3{margin:6px 0 6px;font-size:20px}
+  .choice p{margin:0 0 12px;font-size:15px;color:var(--mute)}
+  .choice span.go{color:var(--green);font-weight:700}
+  section{padding:56px 0}
   section.alt{background:var(--light)}
-  h2{font-size:28px;margin:0 0 18px}
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
-  .card{background:#fff;border:1px solid #dbe7e0;border-radius:12px;padding:20px}
-  .card h3{margin:0 0 8px;font-size:18px}
-  .card p{margin:0;color:var(--mute)}
-  ol{padding-left:20px}
+  h2{font-size:28px;margin:0 0 6px}
+  .sub{color:var(--mute);margin:0 0 26px}
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;padding:0;margin:0;list-style:none;counter-reset:s}
+  .steps li{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px;counter-increment:s}
+  .steps li:before{content:counter(s);display:inline-flex;width:28px;height:28px;border-radius:50%;background:var(--green);color:#fff;align-items:center;justify-content:center;font-weight:700;margin-bottom:8px}
+  form{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px;box-shadow:0 2px 10px rgba(18,40,31,.05)}
+  fieldset{border:0;padding:0;margin:0 0 18px}
+  legend{font-weight:700;font-size:16px;margin-bottom:10px;color:var(--green-d);padding:0}
+  .row{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+  label{display:block;font-size:14px;font-weight:600;margin-bottom:4px}
+  label .req{color:var(--err)}
+  input,select,textarea{width:100%;font:inherit;padding:11px 12px;border:1px solid #b9cdc2;border-radius:8px;background:#fff;color:var(--ink)}
+  input:focus,select:focus,textarea:focus{outline:2px solid var(--green);border-color:var(--green)}
+  textarea{min-height:84px;resize:vertical}
+  .check{display:flex;gap:8px;align-items:center;font-weight:500}
+  .check input{width:auto}
+  .field.invalid input,.field.invalid select,.field.invalid textarea{border-color:var(--err)}
+  .err{display:none;color:var(--err);font-size:13px;margin-top:3px}
+  .field.invalid .err{display:block}
+  .btn{display:inline-block;background:var(--green);color:#fff;border:0;text-decoration:none;padding:14px 24px;border-radius:10px;font-weight:700;font-size:16px;cursor:pointer}
+  .btn:hover{background:var(--green-d)}
+  .note{font-size:13px;color:var(--mute);margin-top:12px}
+  .ok{display:none;background:#e6f4ec;border:1px solid #9fd2b5;border-radius:10px;padding:14px;margin-top:14px}
+  .ok.show{display:block}
   footer{background:var(--dark);color:#b9d3c6;padding:32px 0;font-size:14px}
   footer a{color:#cfe8dc}
-  .legal h3{margin-top:26px}
-  .legal p,.legal li{color:var(--mute)}
+  .legal h3{margin-top:24px}
+  .legal p{color:var(--mute)}
+  .hp{position:absolute;left:-9999px}
 </style>
 </head>
 <body>
-<header>
+
+<header class="top">
   <div class="wrap">
     <nav>
-      <span class="brand">DALYEASE</span>
-      <span><a href="#services">Services</a><a href="#how">How it works</a><a href="#contact">Contact</a><a href="#privacy">Privacy</a></span>
+      <a class="brand" href="#top">DALYEASE</a>
+      <span class="links">
+        <a href="#cab">Corporate cabs</a>
+        <a href="#logistics">Logistics</a>
+        <a href="#contact">Contact</a>
+        <a class="cta" href="https://wa.me/919748764919">WhatsApp</a>
+      </span>
     </nav>
-    <div class="hero">
-      <h1>Electric three-wheelers for Kolkata's goods and passenger transport</h1>
-      <p>Clean, low-cost electric vehicles for local logistics and passenger rides. Get a quote and book on WhatsApp.</p>
-      <a class="btn" href="https://wa.me/919748764919">Chat on WhatsApp</a>
-    </div>
   </div>
 </header>
 
-<section id="services">
+<div class="hero" id="top">
   <div class="wrap">
-    <h2>What we do</h2>
-    <div class="grid">
-      <div class="card"><h3>Goods transport</h3><p>Short-haul, last-mile and local logistics in Kolkata using electric three-wheelers.</p></div>
-      <div class="card"><h3>Passenger rides</h3><p>Local passenger bookings by trip or by the day, with transparent quotes.</p></div>
-      <div class="card"><h3>Driver partnerships</h3><p>Electric vehicles made available to professional drivers under a daily subscription model.</p></div>
+    <h1>Reliable transport for Kolkata businesses</h1>
+    <p>Book corporate cabs or electric three-wheeler logistics. Send a request in two minutes and get a quote on WhatsApp.</p>
+    <div class="choices">
+      <a class="choice" href="#cab">
+        <div class="tag">Four-wheeler</div>
+        <h3>Corporate cab booking</h3>
+        <p>Employee transport, airport transfers, client pickups and full-day rentals.</p>
+        <span class="go">Request a cab quote &rarr;</span>
+      </a>
+      <a class="choice" href="#logistics">
+        <div class="tag">Three-wheeler</div>
+        <h3>Electric logistics booking</h3>
+        <p>Last-mile and local goods transport in electric three-wheelers.</p>
+        <span class="go">Request a logistics quote &rarr;</span>
+      </a>
     </div>
   </div>
-</section>
+</div>
 
 <section id="how" class="alt">
   <div class="wrap">
-    <h2>How booking works</h2>
-    <ol>
-      <li>Message us on WhatsApp at +91 97487 64919 with pickup, drop and timing.</li>
-      <li>Receive a quote for your trip.</li>
-      <li>Confirm, and we assign a vehicle and driver.</li>
-      <li>Receive payment confirmation and receipt on WhatsApp.</li>
+    <h2>How it works</h2>
+    <p class="sub">Simple, quote-first booking.</p>
+    <ol class="steps">
+      <li><strong>Fill the form</strong><br>Tell us the trip or the goods, timing and contact details.</li>
+      <li><strong>Send on WhatsApp</strong><br>The form opens WhatsApp with your request ready to send.</li>
+      <li><strong>Get your quote</strong><br>We reply with a price and confirm availability.</li>
+      <li><strong>We run it</strong><br>A vehicle and driver are assigned, and you get a receipt on WhatsApp.</li>
     </ol>
+  </div>
+</section>
+
+<section id="cab">
+  <div class="wrap">
+    <h2>Corporate cab booking</h2>
+    <p class="sub">Four-wheeler cabs for companies in Kolkata. Request a quote for one trip or a regular arrangement.</p>
+    <form id="cabForm" novalidate>
+      <fieldset>
+        <legend>Company and contact</legend>
+        <div class="row">
+          <div class="field"><label for="c_company">Company name <span class="req">*</span></label><input id="c_company" name="Company" required><div class="err">Please enter the company name.</div></div>
+          <div class="field"><label for="c_person">Contact person <span class="req">*</span></label><input id="c_person" name="Contact person" required><div class="err">Please enter a contact name.</div></div>
+          <div class="field"><label for="c_phone">Mobile number <span class="req">*</span></label><input id="c_phone" name="Mobile" type="tel" inputmode="numeric" placeholder="10-digit mobile" required><div class="err">Enter a valid 10-digit mobile number.</div></div>
+          <div class="field"><label for="c_email">Email</label><input id="c_email" name="Email" type="email"></div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Trip details</legend>
+        <div class="row">
+          <div class="field"><label for="c_type">Service <span class="req">*</span></label>
+            <select id="c_type" name="Service" required>
+              <option value="">Select</option>
+              <option>Airport transfer</option>
+              <option>Point-to-point (local)</option>
+              <option>Full-day rental (8 hrs / 80 km)</option>
+              <option>Outstation</option>
+              <option>Daily or monthly employee transport</option>
+            </select><div class="err">Please select a service.</div></div>
+          <div class="field"><label for="c_vehicle">Vehicle type</label>
+            <select id="c_vehicle" name="Vehicle">
+              <option>Any</option><option>Hatchback</option><option>Sedan</option><option>SUV / MUV</option>
+            </select></div>
+          <div class="field"><label for="c_pickup">Pickup location <span class="req">*</span></label><input id="c_pickup" name="Pickup" required><div class="err">Please enter the pickup location.</div></div>
+          <div class="field"><label for="c_drop">Drop location</label><input id="c_drop" name="Drop"></div>
+          <div class="field"><label for="c_date">Date <span class="req">*</span></label><input id="c_date" name="Date" type="date" required><div class="err">Please choose a date.</div></div>
+          <div class="field"><label for="c_time">Pickup time <span class="req">*</span></label><input id="c_time" name="Time" type="time" required><div class="err">Please choose a time.</div></div>
+          <div class="field"><label for="c_pax">Passengers</label><input id="c_pax" name="Passengers" type="number" min="1" max="12" value="1"></div>
+          <div class="field"><label>&nbsp;</label><label class="check"><input id="c_return" name="Return trip" type="checkbox"> Return trip needed</label></div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <div class="field"><label for="c_notes">Notes</label><textarea id="c_notes" name="Notes" placeholder="Flight number, GST invoice needed, recurring schedule, etc."></textarea></div>
+      </fieldset>
+      <div class="hp"><label>Leave empty<input id="c_hp" tabindex="-1" autocomplete="off"></label></div>
+      <button class="btn" type="submit">Send request on WhatsApp</button>
+      <p class="note">This opens WhatsApp with your details filled in. Nothing is sent until you press send there.</p>
+      <div class="ok" id="cabOk"><strong>WhatsApp should have opened.</strong> If it did not, <a id="cabLink" href="#" target="_blank" rel="noopener">tap here to send your request</a>.</div>
+    </form>
+  </div>
+</section>
+
+<section id="logistics" class="alt">
+  <div class="wrap">
+    <h2>Electric logistics booking</h2>
+    <p class="sub">Electric three-wheelers for local goods transport and last-mile delivery in Kolkata.</p>
+    <form id="logForm" novalidate>
+      <fieldset>
+        <legend>Business and contact</legend>
+        <div class="row">
+          <div class="field"><label for="l_company">Business name <span class="req">*</span></label><input id="l_company" name="Business" required><div class="err">Please enter the business name.</div></div>
+          <div class="field"><label for="l_person">Contact person <span class="req">*</span></label><input id="l_person" name="Contact person" required><div class="err">Please enter a contact name.</div></div>
+          <div class="field"><label for="l_phone">Mobile number <span class="req">*</span></label><input id="l_phone" name="Mobile" type="tel" inputmode="numeric" placeholder="10-digit mobile" required><div class="err">Enter a valid 10-digit mobile number.</div></div>
+          <div class="field"><label for="l_email">Email</label><input id="l_email" name="Email" type="email"></div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Pickup, drop and goods</legend>
+        <div class="row">
+          <div class="field"><label for="l_pickup">Pickup address <span class="req">*</span></label><input id="l_pickup" name="Pickup" required><div class="err">Please enter the pickup address.</div></div>
+          <div class="field"><label for="l_drop">Drop address <span class="req">*</span></label><input id="l_drop" name="Drop" required><div class="err">Please enter the drop address.</div></div>
+          <div class="field"><label for="l_date">Date <span class="req">*</span></label><input id="l_date" name="Date" type="date" required><div class="err">Please choose a date.</div></div>
+          <div class="field"><label for="l_time">Pickup time <span class="req">*</span></label><input id="l_time" name="Time" type="time" required><div class="err">Please choose a time.</div></div>
+          <div class="field"><label for="l_goods">Type of goods <span class="req">*</span></label>
+            <select id="l_goods" name="Goods" required>
+              <option value="">Select</option>
+              <option>Parcels and packages</option>
+              <option>Food or groceries</option>
+              <option>Retail stock</option>
+              <option>Building or hardware material</option>
+              <option>Furniture or household</option>
+              <option>Other</option>
+            </select><div class="err">Please select the goods type.</div></div>
+          <div class="field"><label for="l_weight">Approx. total weight <span class="req">*</span></label>
+            <select id="l_weight" name="Weight" required>
+              <option value="">Select</option>
+              <option>Up to 100 kg</option>
+              <option>100 to 250 kg</option>
+              <option>250 to 500 kg</option>
+              <option>More than 500 kg (needs review)</option>
+            </select><div class="err">Please select the weight.</div></div>
+          <div class="field"><label for="l_freq">How often?</label>
+            <select id="l_freq" name="Frequency">
+              <option>One-time</option><option>Daily</option><option>Weekly</option><option>Monthly contract</option>
+            </select></div>
+          <div class="field"><label>&nbsp;</label><label class="check"><input id="l_help" name="Loading help" type="checkbox"> Loading / unloading help needed</label></div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <div class="field"><label for="l_notes">Notes</label><textarea id="l_notes" name="Notes" placeholder="Number of items, fragile goods, floor / lift access, contact at drop, etc."></textarea></div>
+      </fieldset>
+      <div class="hp"><label>Leave empty<input id="l_hp" tabindex="-1" autocomplete="off"></label></div>
+      <button class="btn" type="submit">Send request on WhatsApp</button>
+      <p class="note">This opens WhatsApp with your details filled in. Nothing is sent until you press send there.</p>
+      <div class="ok" id="logOk"><strong>WhatsApp should have opened.</strong> If it did not, <a id="logLink" href="#" target="_blank" rel="noopener">tap here to send your request</a>.</div>
+    </form>
   </div>
 </section>
 
@@ -86,13 +231,13 @@
     <h2>Privacy Policy</h2>
     <p>Last updated: 23 November 2026. This policy explains how Dalyease, a brand of Bengal GHG Realty Private Limited ("we", "us"), handles personal information.</p>
     <h3>Information we collect</h3>
-    <p>Name, phone number, pickup and drop locations, vehicle assignment, trip and payment details, and messages you send us on WhatsApp.</p>
+    <p>Company or business name, contact name, phone number, email, pickup and drop locations, trip or goods details, payment details, and messages you send us on WhatsApp. Booking forms on this site do not store anything on our website: they prepare a WhatsApp message that you choose to send.</p>
     <h3>How we use it</h3>
-    <p>To provide quotes and bookings, assign vehicles and drivers, record payments, send receipts, balance statements and service notifications, and meet legal and accounting obligations.</p>
+    <p>To provide quotes and bookings, assign vehicles and drivers, record payments, send receipts and service notifications, and meet legal and accounting obligations.</p>
     <h3>WhatsApp</h3>
     <p>We communicate through WhatsApp Business, provided by Meta. Messages are processed by Meta under its own terms and privacy policy. You can stop receiving messages by telling us in the chat.</p>
     <h3>Sharing</h3>
-    <p>We do not sell personal information. We share it only with service providers needed to run the service (such as payment and messaging providers) and where required by law.</p>
+    <p>We do not sell personal information. We share it only with service providers needed to run the service (such as payment and messaging providers), with the driver assigned to your booking, and where required by law.</p>
     <h3>Retention and your choices</h3>
     <p>We keep records for as long as needed for operations, accounting and legal compliance. To ask for access, correction or deletion, contact us on the number above.</p>
   </div>
@@ -101,7 +246,7 @@
 <section id="terms" class="legal">
   <div class="wrap">
     <h2>Terms of Service</h2>
-    <p>By booking or using Dalyease services you agree that: quotes are valid for the stated trip and time; bookings are subject to vehicle and driver availability; payments are due as confirmed in the quote or subscription agreement; and Bengal GHG Realty Private Limited may update these terms by publishing them on this page. Disputes are subject to the courts at Kolkata, India.</p>
+    <p>By booking or using Dalyease services you agree that: quotes are valid for the stated trip or delivery and time; bookings are subject to vehicle and driver availability; payments are due as confirmed in the quote or agreement; goods must be lawful and accurately described; and Bengal GHG Realty Private Limited may update these terms by publishing them on this page. Disputes are subject to the courts at Kolkata, India.</p>
   </div>
 </section>
 
@@ -110,5 +255,69 @@
     &copy; 2026 Dalyease, a brand of Bengal GHG Realty Private Limited. All rights reserved.
   </div>
 </footer>
+
+<script>
+(function(){
+  var WA = "919748764919";
+  var today = new Date();
+  var iso = today.getFullYear() + "-" + ("0"+(today.getMonth()+1)).slice(-2) + "-" + ("0"+today.getDate()).slice(-2);
+  ["c_date","l_date"].forEach(function(id){ var el=document.getElementById(id); if(el){ el.min=iso; } });
+
+  function fieldOf(el){ return el.closest(".field"); }
+  function validPhone(v){ return /^[6-9]\d{9}$/.test(v.replace(/[\s+-]/g,"").replace(/^91/,"")); }
+
+  function validate(form){
+    var ok = true, first = null;
+    var els = form.querySelectorAll("[required]");
+    for (var i=0;i<els.length;i++){
+      var el = els[i], f = fieldOf(el), good = el.value.trim() !== "";
+      if (good && el.type === "tel") { good = validPhone(el.value.trim()); }
+      if (f) { if (good) f.classList.remove("invalid"); else f.classList.add("invalid"); }
+      if (!good && !first) first = el;
+      if (!good) ok = false;
+    }
+    if (first) first.focus();
+    return ok;
+  }
+
+  function labelFor(el){
+    return el.getAttribute("name");
+  }
+
+  function buildMessage(form, title){
+    var lines = ["*" + title + "* (from dalyease.com)", ""];
+    var els = form.querySelectorAll("input[name], select[name], textarea[name]");
+    for (var i=0;i<els.length;i++){
+      var el = els[i], v;
+      if (el.type === "checkbox") { v = el.checked ? "Yes" : "No"; }
+      else { v = el.value.trim(); }
+      if (v === "") continue;
+      lines.push(labelFor(el) + ": " + v);
+    }
+    return lines.join("\n");
+  }
+
+  function wire(formId, okId, linkId, hpId, title){
+    var form = document.getElementById(formId);
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+      if (document.getElementById(hpId).value) return;
+      if (!validate(form)) return;
+      var url = "https://wa.me/" + WA + "?text=" + encodeURIComponent(buildMessage(form, title));
+      var link = document.getElementById(linkId);
+      link.href = url;
+      document.getElementById(okId).classList.add("show");
+      window.open(url, "_blank", "noopener");
+    });
+    form.addEventListener("input", function(e){
+      var f = fieldOf(e.target);
+      if (f && f.classList.contains("invalid") && e.target.value.trim() !== "") f.classList.remove("invalid");
+    });
+  }
+
+  wire("cabForm","cabOk","cabLink","c_hp","Corporate cab booking request");
+  wire("logForm","logOk","logLink","l_hp","Electric logistics booking request");
+})();
+</script>
 </body>
 </html>
